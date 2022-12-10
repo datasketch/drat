@@ -12,16 +12,15 @@
 own CRAN-like repositories for packages (or
 [data](https://journal.r-project.org/archive/2017/RJ-2017-026/index.html)).
 
-## Paso a paso:
+## Step by step:
 
-### Paso 1:
+### Step 1:
 
-Pegar el archivo .tar del paquete en cuestión dentro del repositorio de
-`drat`
+Paste .tar package file inside `drat` repo
 
-### Paso 2:
+### Step 2:
 
-Desde drat, ejecutar la siguiente sentencia:
+From drat repo, execute:
 
 ``` r
 library(drat)
@@ -30,12 +29,27 @@ insertPackage(file="dstools_0.1.0.tar.gz",
               repodir="../drat/")
 ```
 
-# Luego se debería poder instalar un paquete con el siguiente comando:
+### Step 3:
+
+Now the package can be installed as a non-CRAN dependency with the next
+sentence:
 
 ``` r
-install.packages("makeup", repos="https://pablotis.github.io/drat", type="source")
+# dstool package example:
+install.packages("dstools", repos="https://pablotis.github.io/drat")
 #> Installing package into 'C:/Users/pablo/AppData/Local/R/win-library/4.2'
 #> (as 'lib' is unspecified)
+#> Warning: unable to access index for repository https://pablotis.github.io/drat/bin/windows/contrib/4.2:
+#>   no fue posible abrir la URL 'https://pablotis.github.io/drat/bin/windows/contrib/4.2/PACKAGES'
+#> installing the source package 'dstools'
+```
+
+### Step 4:
+
+This sentence must be added on the DESCRIPTION file:
+
+``` r
+Additional_repositories: http://pablotis.github.io/drat
 ```
 
 Fuente: <https://eddelbuettel.github.io/drat/vignettes/dratstepbystep/>
